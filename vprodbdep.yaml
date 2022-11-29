@@ -27,7 +27,10 @@ spec:
                       containerPort: 3306
                   env:
                     - name: MYSQL_ROOT_PASSWORD
-                      value: admin123
+                      valueFrom:
+                        secretKeyRef:
+                            name: newsecret
+                            key: db-pass
         nodeSelector:
             zone: us-east-2a
         volumes:
